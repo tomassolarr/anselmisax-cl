@@ -1,0 +1,185 @@
+---
+import { waLink } from '../config';
+import Icon from './Icon.astro';
+
+const plans = [
+  {
+    mode: 'Presencial',
+    city: 'Santiago, Chile',
+    icon: 'play',
+    accent: 'bg-coral',
+    soft: 'text-coral',
+    price: 'desde $111.111',
+    priceLabel: 'por clase',
+    tagline: 'En mi sala o a tu casa. Saxo, técnica y groove cara a cara.',
+    feats: [
+      'Clases semanales de 50 min',
+      'Repertorio de pop, románticos y lo que quieras',
+      'Saxo soprano o alto, mapa completo para elegir',
+      'Apuntes y playbacks después de cada clase',
+      'Todo lo que aprendiste, grabado para practicar',
+    ],
+    wa: waLink('¡Hola Javiera! Quiero agendar una clase de saxofón presencial. 🎷'),
+    delay: '0ms',
+  },
+  {
+    mode: 'Online',
+    city: 'Desde donde estés',
+    icon: 'note',
+    accent: 'bg-mint text-ink',
+    soft: 'text-[#8a5a5f]',
+    price: 'desde $111.111',
+    priceLabel: 'por clase',
+    tagline: 'La misma energía, a través de la pantalla. Solo necesitas internet y ganas.',
+    feats: [
+      'Zoom con audio optimizado para música',
+      'Plataforma con materiales y ejercicios',
+      'Clases grabadas para repasar las veces que quieras',
+      'Horarios flexibles, incluido fin de semana',
+      'Ni importa tu nivel: desde cero hasta perfeccionar técnica',
+    ],
+    wa: waLink('¡Hola Javiera! Quiero agendar una clase de saxofón online. 🌐'),
+    delay: '150ms',
+  },
+];
+
+const steps = [
+  { n: '1', t: 'Diagnóstico', d: 'Charlamos, me cuentas qué quieres lograr y hacemos una clase de prueba para conocernos.' },
+  { n: '2', t: 'Plan a tu ritmo', d: 'Armamos un camino con metas claras: técnica, escala, repertorio y mucho groove.' },
+  { n: '3', t: 'Cada nota cuenta', d: 'Material en tu correo, seguimiento entre clases y un oído atento a tus dudas.' },
+];
+
+const faqs = [
+  {
+    q: '¿Necesito tener saxofón para empezar?',
+    a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus nibh a urna ullamcorper, vitae tristique lectus cursus. Integer porta ante eu risus fermentum, sed vestibulum dolor posuere.',
+  },
+  {
+    q: '¿Qué edad debe tener?',
+    a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus nibh a urna ullamcorper, vitae tristique lectus cursus. Integer porta ante eu risus fermentum.',
+  },
+  {
+    q: '¿Online realmente funciona?',
+    a: 'Proin euismod augue ac justo tincidunt, id tincidunt sem volutpat. Ut sagittis metus ac suscipit tempus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
+  },
+  {
+    q: '¿Tienes cupo para clases nuevas?',
+    a: 'Fusce at ligula et augue venenatis scelerisque. Aenean id augue dapibus, ornare augue non, venenatis est. Vestibulum ante ipsum primis in faucibus orci luctus.',
+  },
+];
+---
+
+<section id="clases" class="relative overflow-hidden bg-gold-soft py-20 md:py-28">
+  <div
+    class="pointer-events-none absolute -left-24 top-16 -z-0 size-72 animate-blob rounded-full bg-mint/40 blur-2xl"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="pointer-events-none absolute -right-20 bottom-10 -z-0 size-80 animate-blob rounded-full bg-coral/25 blur-2xl"
+    style="animation-delay: 8s"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 md:px-8">
+    <div class="mx-auto max-w-2xl text-center" data-reveal>
+      <p class="font-display text-xs font-bold uppercase tracking-[0.25em] text-coral-deep">
+        ( Clases de saxofón )
+      </p>
+      <h2 class="mt-4 font-display text-3xl font-extrabold uppercase leading-[1.02] tracking-tight md:text-5xl">
+        ¿Quieres aprender <span class="text-coral underline decoration-gold decoration-8 underline-offset-4">saxofón</span>?
+      </h2>
+      <p class="mt-5 text-lg leading-relaxed text-ink-soft">
+        Presencial en Santiago u online desde cualquier lugar.
+      </p>
+    </div>
+
+    {/* tarjetas */}
+    <div class="mt-14 grid gap-6 md:grid-cols-2">
+      {plans.map((p) => (
+        <article
+          class="relative flex flex-col overflow-hidden rounded-[2rem] border-2 border-ink bg-paper shadow-hard transition-all duration-500 hover:-translate-y-1.5"
+          data-reveal
+          style={`--d:${p.delay}`}
+        >
+          <div class={`flex items-center justify-between gap-3 border-b-2 border-ink ${p.accent} px-6 py-4`}>
+            <div class="flex items-center gap-3">
+              <span class={`grid size-10 place-items-center rounded-full border-2 border-ink ${p.mode === 'Online' ? 'text-ink' : 'text-paper'}`}>
+                <Icon name={p.icon} class="size-5" />
+              </span>
+              <div>
+                <h3 class="font-display text-lg font-extrabold uppercase leading-none">{p.mode}</h3>
+                <p class="text-xs font-semibold opacity-80">{p.city}</p>
+              </div>
+            </div>
+            <span class="rounded-full border-2 border-ink bg-paper px-3 py-1 font-display text-[0.6rem] font-bold uppercase tracking-wider">
+              Cupos limitados
+            </span>
+          </div>
+
+          <div class="flex flex-1 flex-col p-6 md:p-7">
+            <p class="text-[1.05rem] font-semibold leading-snug text-ink-soft">{p.tagline}</p>
+            <ul class="mt-6 space-y-3">
+              {p.feats.map((f) => (
+                <li class="flex items-start gap-3">
+                  <span class={`mt-0.5 grid size-6 shrink-0 place-items-center rounded-full ${p.accent} ${p.mode === 'Online' ? 'text-ink' : 'text-paper'}`}>
+                    <Icon name="check" class="size-3.5" />
+                  </span>
+                  <span class="text-[0.95rem] font-medium leading-snug">{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-auto pt-7">
+              <div class="flex items-end justify-between gap-3 border-t-2 border-dashed border-ink/20 pt-5">
+                <div>
+                  <p class={`font-display text-lg font-extrabold ${p.soft}`}>{p.price}</p>
+                  <p class="text-xs font-semibold text-ink/50">{p.priceLabel} · pack mensual disponible</p>
+                </div>
+              </div>
+              <a
+                href={p.wa}
+                target="_blank"
+                rel="noopener"
+                class={`group mt-4 flex items-center justify-center gap-2 rounded-full border-2 border-ink ${p.accent} ${p.mode === 'Online' ? 'text-ink' : 'text-paper'} px-6 py-3.5 font-display text-sm font-bold uppercase transition-all hover:-translate-y-0.5 hover:shadow-lift`}
+              >
+                Agendar {p.mode.toLowerCase()}
+                <Icon name="arrow" class="size-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    {/* pasos */}
+    <div class="mt-16 grid gap-4 md:grid-cols-3" data-reveal>
+      {steps.map((s, i) => (
+        <div class="relative rounded-2xl border-2 border-ink bg-paper p-6 transition-transform duration-300 hover:-translate-y-1">
+          <span class="absolute -top-4 left-6 grid size-9 place-items-center rounded-full border-2 border-ink bg-ink font-display text-sm font-black text-gold">
+            {s.n}
+          </span>
+          <h4 class="mt-2 font-display text-lg font-extrabold uppercase">{s.t}</h4>
+          <p class="mt-2 text-[0.95rem] leading-relaxed text-ink-soft">{s.d}</p>
+        </div>
+      ))}
+    </div>
+
+    {/* FAQ */}
+    <div class="mx-auto mt-16 max-w-3xl" data-reveal>
+      <h3 class="text-center font-display text-xl font-extrabold uppercase">
+        Preguntas que <span class="text-coral">siempre</span> me hacen
+      </h3>
+      <div class="mt-6 space-y-3">
+        {faqs.map((f) => (
+          <details class="group rounded-2xl border-2 border-ink bg-paper transition-colors open:bg-ink open:text-paper">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-display text-sm font-bold uppercase tracking-wide [&::-webkit-details-marker]:hidden">
+              {f.q}
+              <span class="grid size-7 shrink-0 place-items-center rounded-full border-2 border-current text-sm transition-transform duration-300 group-open:rotate-45">+</span>
+            </summary>
+            <p class="px-5 pb-5 text-[0.95rem] leading-relaxed opacity-85">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

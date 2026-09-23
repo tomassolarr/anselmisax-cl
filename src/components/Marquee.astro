@@ -1,0 +1,33 @@
+---
+interface Props {
+  items?: string[];
+  className?: string;
+  speed?: 'animate-marquee' | 'animate-marquee-fast';
+  reverse?: boolean;
+  glyph?: string;
+}
+
+const {
+  items = ['Saxofón en vivo', 'Matrimonios', 'Cócteles', 'Clases', 'Eventos', 'Celebraciones'],
+  className = 'bg-coral text-paper',
+  speed = 'animate-marquee',
+  reverse = false,
+  glyph = '♫',
+} = Astro.props;
+
+const doubled = [...items, ...items];
+---
+
+<div class={`overflow-hidden whitespace-nowrap select-none border-y-2 border-ink/10 py-3 ${className}`}>
+  <div
+    class={`${speed} flex w-max items-center gap-8 pr-8`}
+    style={reverse ? 'animation-direction: reverse' : undefined}
+  >
+    {doubled.map((item) => (
+      <span class="flex items-center gap-8 font-display text-xs md:text-sm font-bold uppercase tracking-[0.2em]">
+        {item}
+        <span aria-hidden="true">{glyph}</span>
+      </span>
+    ))}
+  </div>
+</div>

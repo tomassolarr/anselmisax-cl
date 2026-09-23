@@ -1,0 +1,127 @@
+---
+import { waLink } from '../config';
+import Icon from './Icon.astro';
+
+const links = [
+  { label: 'Eventos', href: '#eventos' },
+  { label: 'Clases', href: '#clases' },
+  { label: 'Sobre mí', href: '#sobre-mi' },
+  { label: 'Contacto', href: '#contacto' },
+];
+---
+
+<nav class="fixed inset-x-0 top-0 z-40 border-b-2 border-ink/10 bg-paper/80 backdrop-blur-md">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-8">
+    <a href="/" class="group flex items-center gap-3" aria-label="Anselmi Sax — inicio">
+      <span class="grid size-10 place-items-center rounded-full border-2 border-ink bg-gold font-display text-lg font-extrabold transition-transform duration-300 group-hover:-rotate-12">
+        A<span class="text-coral">♪</span>
+      </span>
+      <span class="font-display text-base font-extrabold uppercase leading-none tracking-tight md:text-lg">
+        Anselmi<span class="text-coral">Sax</span>
+      </span>
+    </a>
+
+    <div class="hidden items-center gap-1 lg:flex">
+      {links.map((l) => (
+        <a
+          href={l.href}
+          class="rounded-full px-4 py-2 text-sm font-semibold text-ink/70 transition-colors hover:bg-ink hover:text-paper"
+        >
+          {l.label}
+        </a>
+      ))}
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a
+        href={waLink('¡Hola Javiera! Quiero cotizar música en vivo para mi evento.')}
+        target="_blank"
+        rel="noopener"
+        class="hidden items-center gap-2 rounded-full border-2 border-ink bg-coral px-5 py-2.5 font-display text-xs font-bold uppercase text-paper shadow-hard transition-all hover:-translate-y-0.5 hover:shadow-lift sm:flex"
+      >
+        Cotizar
+      </a>
+      <button
+        id="menu-btn"
+        class="grid size-10 place-items-center rounded-full border-2 border-ink bg-paper text-ink transition-colors hover:bg-ink hover:text-paper lg:hidden"
+        aria-label="Abrir menú"
+      >
+        <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="17" x2="20" y2="17"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div
+  id="mobile-menu"
+  class="invisible fixed inset-0 z-50 flex flex-col bg-night text-paper opacity-0 transition-all duration-300 lg:hidden"
+  aria-hidden="true"
+>
+  <div class="flex items-center justify-between px-4 py-3">
+    <span class="flex items-center gap-3">
+      <span class="grid size-10 place-items-center rounded-full bg-gold font-display text-lg font-extrabold text-ink">
+        A♪
+      </span>
+      <span class="font-display font-extrabold uppercase">AnselmiSax</span>
+    </span>
+    <button
+      id="menu-close"
+      class="grid size-10 place-items-center rounded-full border-2 border-paper/40"
+      aria-label="Cerrar menú"
+    >
+      <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <div class="flex flex-1 flex-col justify-center gap-2 px-6">
+    {links.map((l, i) => (
+      <a
+        href={l.href}
+        class="group flex items-baseline gap-4 border-b border-paper/10 py-4"
+        style={`transition-delay:${i * 60}ms`}
+      >
+        <span class="font-display text-xs text-gold">0{i + 1}</span>
+        <span class="font-display text-4xl font-extrabold uppercase transition-transform duration-300 group-hover:translate-x-2 md:text-5xl">
+          {l.label}
+        </span>
+      </a>
+    ))}
+  </div>
+
+  <div class="px-6 pb-10">
+    <a
+      href={waLink('¡Hola Javiera! Quiero cotizar música en vivo para mi evento.')}
+      target="_blank"
+      rel="noopener"
+      class="flex w-full items-center justify-center gap-2 rounded-full bg-coral px-6 py-4 font-display text-sm font-bold uppercase text-paper"
+    >
+      Cotizar por WhatsApp
+    </a>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const closeBtn = document.getElementById('menu-close');
+  const menu = document.getElementById('mobile-menu');
+
+  function openMenu() {
+    menu.classList.remove('invisible', 'opacity-0');
+    document.body.classList.add('overflow-hidden');
+  }
+  function closeMenu() {
+    menu.classList.add('invisible', 'opacity-0');
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  btn?.addEventListener('click', openMenu);
+  closeBtn?.addEventListener('click', closeMenu);
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+</script>
