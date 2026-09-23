@@ -15,38 +15,9 @@ const videos = [
   },
 ];
 
-const shots = [
-  {
-    src: 'https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=1000&auto=format&fit=crop',
-    alt: 'Saxofón dorado en primer plano',
-    tilt: '-rotate-3',
-    wide: true,
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1000&auto=format&fit=crop',
-    alt: 'Trío de músicos en un bar',
-    tilt: 'rotate-2',
-    wide: false,
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?q=80&w=1000&auto=format&fit=crop',
-    alt: 'Escenario con luces cálidas',
-    tilt: '-rotate-2',
-    wide: false,
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop',
-    alt: 'Micrófono en una fiesta privada',
-    tilt: 'rotate-3',
-    wide: true,
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1502773860571-211a597d6e4b?q=80&w=1000&auto=format&fit=crop',
-    alt: 'Evento al aire libre al atardecer',
-    tilt: '-rotate-1',
-    wide: true,
-  },
-];
+const stageShow =
+  'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=700&h=700&auto=format&fit=crop';
+const stageShots = Array.from({ length: 6 }, (_, i) => i);
 
 const igShots = [
   'https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=600&h=600&auto=format&fit=crop',
@@ -102,19 +73,10 @@ const igShots = [
         <Icon name="play" class="size-6 text-coral" />
         En el escenario
       </h3>
-      <div class="mt-6 grid grid-cols-2 gap-5 md:grid-cols-5">
-        {shots.map((s) => (
-          <figure
-            class={`${s.tilt} overflow-hidden rounded-3xl border-2 border-ink bg-paper shadow-hard transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] ${
-              s.wide ? 'col-span-2' : 'col-span-1'
-            }`}
-          >
-            <img
-              src={s.src}
-              alt={s.alt}
-              class={`w-full object-cover ${s.wide ? 'aspect-[4/3]' : 'aspect-[3/4]'}`}
-              loading="lazy"
-            />
+      <div class="mx-auto mt-6 grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        {stageShots.map((i) => (
+          <figure class="overflow-hidden rounded-3xl border-2 border-ink bg-paper shadow-hard">
+            <img src={stageShow} alt="En el escenario" class="aspect-square w-full object-cover" loading="lazy" />
           </figure>
         ))}
       </div>

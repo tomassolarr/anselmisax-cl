@@ -73,10 +73,11 @@ const notes = [
         class="hero-rise mt-8 max-w-xl text-lg leading-relaxed text-ink-soft md:text-xl"
         style="--rd:360ms"
       >
-        Soy <strong class="text-ink">Javiera Anselmi</strong>, saxofonista. Pongo la calidez del saxo en
-        tu <strong class="text-ink">matrimonio</strong>, cóctel o celebración, y te enseño a tocarlo —
-        <strong class="text-ink">presencial</strong> en Santiago u <strong class="text-ink">online</strong>{' '}
-        desde donde estés.
+        Soy <strong class="text-ink">Javiera Anselmi</strong>. Saxofonista profesional de la{' '}
+        <strong class="text-ink">Universidad de Chile</strong> con más de 10 años de experiencia en
+        importantes escenarios del país junto a destacados artistas: <strong class="text-ink">Shakira</strong>,{' '}
+        <strong class="text-ink">Stewart Copeland (The Police)</strong>, <strong class="text-ink">Luis Jara</strong>,{' '}
+        <strong class="text-ink">31 Minutos</strong>, entre otros.
       </p>
 
       <div class="hero-rise mt-10 flex flex-wrap items-center gap-4" style="--rd:480ms">
@@ -124,30 +125,14 @@ const notes = [
 
     {/* ---- columna imagen ---- */}
     <div class="relative mx-auto w-full max-w-md lg:col-span-5" data-reveal>
-      {/* vinilo decorativo (estático) */}
-      <div
-        class="absolute left-1/2 top-1/2 -z-10 aspect-square w-[118%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[repeating-radial-gradient(circle,#16120c_0px,#16120c_3px,#241e15_3px,#241e15_7px)] shadow-[0_20px_60px_rgba(28,28,28,0.35)]"
-        aria-hidden="true"
-      >
-        <div class="absolute inset-0 grid place-items-center">
-          <span class="grid size-16 place-items-center rounded-full bg-coral font-display text-2xl font-black text-paper">
-            A♪
-          </span>
-        </div>
-      </div>
-
       {/* foto */}
-      <div class="relative rotate-1 overflow-hidden rounded-t-[50%] rounded-b-3xl border-2 border-ink bg-night shadow-hard">
+      <div class="relative rotate-1 overflow-hidden rounded-[2rem] border-2 border-ink bg-white shadow-hard">
         <img
-          src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=900&auto=format&fit=crop"
-          alt="Saxofón dorado de Javiera Anselmi"
-          class="aspect-[3/4] w-full object-cover saturate-[0.85] contrast-[1.02]"
+          src="/img/javiera-banner.webp"
+          alt="Javiera Anselmi, saxofonista profesional"
+          class="aspect-[3/4] w-full object-contain"
           loading="eager"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent"></div>
-        <p class="absolute bottom-4 left-1/2 w-max -translate-x-1/2 rounded-full border border-paper/40 bg-night/70 px-4 py-1.5 font-display text-[0.65rem] font-bold uppercase tracking-[0.2em] text-gold backdrop-blur-sm">
-          ♪ Música en vivo
-        </p>
       </div>
 
 {/* chips flotantes */}
@@ -167,7 +152,7 @@ const notes = [
         style="--tilt:4deg"
       >
         <span class="font-display text-lg font-black text-coral">+100</span>
-        <span class="text-xs font-bold leading-tight text-ink">eventos<br /></span>
+        <span class="text-xs font-bold leading-tight text-ink">eventos</span>
       </div>
     </div>
   </div>

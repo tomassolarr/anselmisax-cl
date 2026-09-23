@@ -1,6 +1,4 @@
 ---
-import Marquee from './Marquee.astro';
-
 const stats = [
   { v: '15+', l: 'tocando', d: '0ms' },
   { v: '+100', l: 'eventos', d: '120ms' },
@@ -74,14 +72,5 @@ const stats = [
         </dl>
       </div>
     </div>
-  </div>
-
-  <div class="mt-16 border-t border-paper/10 pt-10">
-    <Marquee
-      items={['Matrimonios', 'Cócteles', 'Eventos corporativos', 'Celebraciones', 'Clases', 'Lo que venga']}
-      glyph="♪"
-      className="border-0 bg-transparent text-paper/40"
-      speed="animate-marquee-fast"
-    />
   </div>
 </section>
